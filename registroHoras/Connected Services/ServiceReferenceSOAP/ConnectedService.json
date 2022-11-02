@@ -1,0 +1,18 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "https://localhost:44335/Servicio.asmx"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "messageContract": true,
+    "namespaceMappings": [
+      "*, ServiceReferenceSOAP"
+    ],
+    "sync": true,
+    "targetFramework": "net6.0",
+    "typeReuseMode": "Specified"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://localhost:8080/CRUD/ServicioWeb"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "messageContract": true,
+    "namespaceMappings": [
+      "*, ServiceReferenceJavaSOAP"
+    ],
+    "sync": true,
+    "targetFramework": "net6.0",
+    "typeReuseMode": "Specified"
+  }
+}

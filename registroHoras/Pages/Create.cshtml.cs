@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using registroHoras.Models;
+using ServiceReferenceJavaSOAP;
+using ServiceReferenceSOAP;
 
 namespace registroHoras.Pages
 {
@@ -21,11 +23,17 @@ namespace registroHoras.Pages
 
         public IActionResult OnGet()
         {
-            Users = _context.Usuarios.Select(a => 
+            DatosRequest request = new();
+            var client = new ServicioSoapClient(ServicioSoapClient.EndpointConfiguration.ServicioSoap, "https://localhost:44335/Servicio.asmx");
+            var opciones =  client.Datos(request).Body;
+            findAllRequest requestFindAll = new();
+            var clientJava = new ServicioWebClient(ServicioWebClient.EndpointConfiguration.ServicioWebPort, "http://localhost:8080/CRUD/ServicioWeb");
+            var usuarios = clientJava.findAll(requestFindAll).@return;
+            Users = usuarios.Select(a => 
                                 new SelectListItem
                                 {
-                                    Value = a.Nombre,
-                                    Text = a.Nombre
+                                    Value = a.nombre,
+                                    Text = a.nombre
                                 }).ToList();
             return Page();
         }
