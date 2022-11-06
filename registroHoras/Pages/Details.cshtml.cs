@@ -35,7 +35,12 @@ namespace registroHoras.Pages
             else 
             {
                 RegistroEntradum = registroentradum;
-                RegistroEntradum.Estado = RegistroEntradum.Estado == "S" ? "Salida" : "Entrada";
+                RegistroEntradum.Estado = RegistroEntradum.Estado switch
+                {
+                    "S" => "Salida",
+                    "E" => "Entrada",
+                    _ => "Almuerzo",
+                };
             }
             return Page();
         }

@@ -27,7 +27,12 @@ namespace registroHoras.Pages
                 RegistroEntradum = await _context.RegistroEntrada.ToListAsync();
                 foreach (var registroEntradum in RegistroEntradum)
                 {
-                    registroEntradum.Estado = registroEntradum.Estado == "S" ? "Salida" : "Entrada";
+                    registroEntradum.Estado = registroEntradum.Estado switch
+                    {
+                        "S" => "Salida",
+                        "E" => "Entrada",
+                        _ => "Almuerzo",
+                    };
                 }
             }
         }
